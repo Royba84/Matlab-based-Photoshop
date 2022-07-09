@@ -183,4 +183,60 @@ If the image is in RGB format it is being divided to the 3 channels and simply I
   8) Flip Green & Blue - Same as (7) but this time i swap between the Green and blue color channels.
 
 
-15) 
+# 15) Special effect : Add Text 
+
+![image](https://user-images.githubusercontent.com/105777016/178101500-2b006107-3c4c-42f1-90b5-e8189a8bc464.png)
+
+
+The user has to pick the desired font from the drop-down menu: (default - Times New Roman)
+
+![image](https://user-images.githubusercontent.com/105777016/178101502-0b95a9e9-8068-4923-b474-11e3ab81fc5c.png)
+
+Afterwards, the user has to pick the font size using the spiner (the value can be typed directly or be changed using the up/down arrow buttons). (defualt size - 50)
+And then the user has to choose the text color by clicking on "Choose color" button.
+The following window will pop-up: (default text color - black)
+![image](https://user-images.githubusercontent.com/105777016/178101547-a4f9b7a7-e24f-4825-844b-105b069ee6e6.png)
+
+Next, the user has to type the desired text in the field "Enter text here".
+After pressing the button "Create the text" the user has to place the cursor in the desired location he wants to add the text on the top of the image.
+
+Eventually the text will be assimilated in the original image.
+
+In order to implement this effect I used the function insertText() which gets as input the parameters chosen by the user (font type, font size, color etc...)
+
+
+
+Complementary contents:
+
+Those contents are not so special but yet are crucial for the solid functioning of the application and deserved to be shown:
+
+1) Reload - This button allows the user to return the original image that was loaded BEFORE all the changes that were made. actually it is a speedy way to reload that same picture to start over, this in order to make the application ease to use.
+It was implemented by storing the original image right after loading her in the first time inside the variable - "app.Original_image".
+
+2) Undo - This button as his name might imply allows the user to cancel the last (or few last) actions that were made to quickly handle mistakes while editing.
+It is possible to return to the original image (by clicking a while.. for that we have the reload button). If one clicked and returned to the original image and tries to click again an error message will be presented which says : "No more previous images".
+
+In order to implement this button i used cell array. With the program initiation a cell array is created empty and saved inside the variable "app.Previous_image".
+Before making any new action within the application, the current image that shown on the axis is being stored inside the cell array in a way that the last image shown is the first to be accessed in case of button invoke:
+
+![image](https://user-images.githubusercontent.com/105777016/178101880-e8c46662-3add-482c-b139-33adf4ab8294.png)
+
+after cliking "undo" the last image is being called from the cell array and stored in temporary variable "pre", the last saved image in the cell array is being deleted and the image stored in "pre" is being showed on the screen:
+
+![image](https://user-images.githubusercontent.com/105777016/178101930-314a36e2-97f9-4e08-80d9-17bd69b56f6a.png)
+
+3) The main screen - "axis":
+
+![image](https://user-images.githubusercontent.com/105777016/178101948-5a6aa395-b735-46b9-98c1-9e42d8df2d57.png)
+
+In order to show what I do on the screen i used a graphic tool names "axis", within the application callbacks it is called : "app.ImageAxis".
+In order to link between the axis to our actions I saved the new image that operation was made on her inside the variable : "app.Presented_image".
+After the operation was done the new image will be shown on the axis - meaning on the screen :
+
+![image](https://user-images.githubusercontent.com/105777016/178102002-1d43e833-b1c9-403d-aa4e-909153f3dcd3.png)
+
+
+
+The END
+Hopefully you will find those explanations helpful.
+Roy.
