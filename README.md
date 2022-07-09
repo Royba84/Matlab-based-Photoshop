@@ -123,4 +123,64 @@ The user can also remove the noise by pressing "Remove noise".
 
 To implement the noise I used imnoise() which gets the noise density from the edit field value entered by the user and to remove the noise I used median filter - medfilt2() which filters across all the channels.
 
-13) Gaussian noise - 
+13) Gaussian noise - ![image](https://user-images.githubusercontent.com/105777016/178100875-e2320bad-581d-4797-8c15-3c6694f895e5.png)
+
+In order to add gausian noise to the image the user has to type the variance value in the edit field. the default value is 0.01 and the range is between 0 to 1.
+Eventually the user has to press "Apply".
+In order to remove gaussian noise I implemented 2 methods which can be chosen from the drop-down menu:
+
+![image](https://user-images.githubusercontent.com/105777016/178100918-d4235cd5-2cd2-4d89-9758-d55366c891da.png)
+
+Using average filter or Wiener filter.
+Using imnoise() I produced the gaussian noise (with the string ' gaussian' as function input).
+
+Wiener filter - In order to create him i used the function wiener2() which gets the noisy image as input, the filter dimensions are 5x5.
+Average filter - In order to creat him I used the function fspecial() which gets the string 'average' as input (and the noisy image of course), the filter dimensions are 3x3.
+
+
+
+ # Fifth tab - Effects:
+ 
+ 
+ 14) Atistic effects - ![image](https://user-images.githubusercontent.com/105777016/178101022-311b0dfb-0535-4f0a-981a-c7759a1db0cf.png)
+
+  1) Vintage - Converting the input image into an "old fashioned" style. In case that the image is in RGB format it is converted to a "golden" image and if the image is gray scale, the user will be notified an error that gray image can't be "vintaged".
+
+Implementation - In order to make the vintage effect, I seperated the RGB channels changed their values and reunited them.
+
+  2) Negative - After pressing on the negative button, a complementary image will be created that complement the original pixel values from the original image.
+If the image is in gray scale the following operation is made : 255-pixel_value= complementary_value.
+If the image is in RGB format, the operation above is being done for each channel seperately (R.G.B).
+
+Implementation - used the function imcomplement().
+
+  3) Black & White - Converting the original image to "Black & white".
+In case that the image in RGB format, first there is conversion to grayscale using the function rgb2gray(). 
+If the image is grayscale the image is being binarized using imbinarize() (this step is being made to RGB image too after being converted to gray).
+
+  4) Sinusoaidal Transformation - Effect which allows to convert the image to sinusoaidal view which gives "waving flag" effect.
+This effect was made using sinusoaidal transformation as i wrote this specific lines of code:
+![image](https://user-images.githubusercontent.com/105777016/178101251-3551f3a0-5505-47d3-8965-e76abca0f8c2.png)
+
+This effect was implemented using geometrictransform2d() for the sinusoaidal transformation and imwrap() to apply the transformation on our image.
+
+  5) Pencil drawing - Converts the image to "Pencil drawing" effect. 
+The principle behind this effect is "edge detection". If the image is in RGB format it is being converted to grayscale. If it is already in grayscale we will keep it as it is and create the following filter:
+
+![image](https://user-images.githubusercontent.com/105777016/178101316-3d4ce5a6-bbcd-4eb4-98a6-62bbd854ac64.png)
+
+This filter is being used on our image using imfilter() which using convolution.
+After the convolution, again the same calculation we saw on the negative effect is being made:
+255-pixel_value=complementary_value.
+
+  6) Blur - Allows to blur the original image.
+Was implemented using imgaussfilt(). The function gets the image we want to blur with the standard deviation of '7'.
+
+  7) Flip Red & Blue - Effect that flips between R and B color channels.
+If the image is in RGB format it is being divided to the 3 channels and simply I swap between the blue and red channels and unite them afterwards.
+*Note* - This effect can't take place on grayscale image (obviously because there are no Red and Blue color channels .. ;-) )
+
+  8) Flip Green & Blue - Same as (7) but this time i swap between the Green and blue color channels.
+
+
+15) 
