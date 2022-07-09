@@ -2,7 +2,7 @@ MATLAB based Photoshop
 
 GUI explanation:
 
-First tab - Handling images:
+ # First tab - Handling images:
 
 1) Loading image to the workspace - ![image](https://user-images.githubusercontent.com/105777016/178099278-b61e41a3-6ee3-4b69-9d6e-ee31e803055b.png)
 
@@ -30,4 +30,34 @@ In order to implement this content I used the following MATLAB function: imwrite
 
  *Note* - From now on, for each content listed, the whole actions and changes will be presented in the workspace on top of the axis (in the application main window).
  
+ # Second tab - Geometric operations:
+ 
+ 3) Image resize - by scrolling a slider, the image size can be changed (enlarged/minimized) times the value that was chosen with the cursor - ![image](https://user-images.githubusercontent.com/105777016/178099551-382ecaae-b30b-47b6-b69d-5a809d4027ca.png)
+
+In order to implement this content I used the following MATLAB function: imresize() + if the user choose to minize the image I padded with '0' (black background) the background using padarray().
+
+4) Image rotation - ![image](https://user-images.githubusercontent.com/105777016/178099651-8aa58128-57eb-4c3b-a4e7-88a8ee9eb40e.png)
+
+ can be made in a few ways:
+- 90 degrees clockwise.
+- 90 degrees counterclockwise.
+- 180 degrees for each direction with crop.
+- 180 degrees for each direction without crop.
+
+In order to implement this content I used the following MATLAB function: imrotate().
+
+5) Vertical & Horizontal Mirroring - ![image](https://user-images.githubusercontent.com/105777016/178099691-fdb3aa9f-6701-4991-8dbc-b075d57e8fbc.png)
+
+The user has to press the kind of mirroring he wants (vertical / horizontal)
+
+In order to implement this content I used the following MATLAB function: flip().
+
+
+6) Affine Transform - ![image](https://user-images.githubusercontent.com/105777016/178099734-50a59940-6140-4752-9f15-067f4331292f.png)
+
+ The user can choose between 2 kinds of affinic transormations:
+ 1) Shear - values range [2,-2].
+ 2) Translation - values range - limitless.
+ 
+ *Note* - after loading the image into the workspace, shear transformation will be chosen as default.
  
